@@ -1,0 +1,46 @@
+#1
+apt-get update && apt-get install qemu -y && apt install qemu-utils -y && apt install qemu-system-x86-xen -y && apt install qemu-system-x86 -y && apt install qemu-kvm -y && qemu-img create -f raw windows2012.img 25G
+
+#download drive
+#Download Drivers : https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio
+#Download Windows : https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server
+
+#2
+qemu-system-x86_64 \
+  -m 3G \
+  -cpu host \
+  -enable-kvm \
+  -boot order=d \
+  -drive file=windows2012.iso,media=cdrom \
+  -drive file=windows2012.img,format=raw,if=virtio \
+  -drive file=virtio-win.iso,media=cdrom \
+  -device usb-ehci,id=usb,bus=pci.0,addr=0x4 \
+  -device usb-tablet \
+  -vnc :0 \
+
+#enter 2x
+
+#3
+install windows using vnc
+
+uncheck hide drive
+
+load drive and browse on virtio-win
+\NetKvm\2k12r2\amd64
+\viostor\2k12r2\amd64
+
+#windows
+server manager > IE Enchanced Security Configure off
+server manager > tools > local security police > local policies > interactive logon : Do Not Require CTRL+ALT+DEL enable
+server manager > local server > windwos remote desktop enable
+$ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+$ netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
+
+#4
+apt install apache2
+sudo ufw allow 'Apache'
+dd if=windows2012.img | gzip -c>windows2012r2.gz
+cp windows2012r2.gz /var/www/html/
+ 
+#download or upload vps
+Check if it works with typing : http://YOUR-IP-HERE/filename.gz
