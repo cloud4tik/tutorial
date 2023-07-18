@@ -31,16 +31,16 @@ load drive and browse on virtio-win
 
 #windows
 server manager > IE Enchanced Security Configure off
+download chrome
+bit.ly/3rsILhg
+
 server manager > tools > local security police > local policies > interactive logon : Do Not Require CTRL+ALT+DEL enable
 server manager > local server > windwos remote desktop enable
 $ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
 $ netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
 
 #4
-apt install apache2
-sudo ufw allow 'Apache'
-dd if=windows2012.img | gzip -c>windows2012r2.gz
-cp windows2012r2.gz /var/www/html/
+apt install apache2 -y && sudo ufw allow 'Apache' && dd if=windows2012.img | gzip -c>windows2012r2.gz && mv windows2012r2.gz /var/www/html/
  
 #download or upload vps
 Check if it works with typing : http://YOUR-IP-HERE/filename.gz
