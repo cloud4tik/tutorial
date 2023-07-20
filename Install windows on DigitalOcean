@@ -6,6 +6,10 @@ apt-get update && apt-get install qemu -y && apt install qemu-utils -y && apt in
 #Download Windows : https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server
 
 #2
+wget -O virtio-win.iso 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.189-1/virtio-win.iso'
+wget -O windows2012.iso 'https://download.microsoft.com/download/6/2/A/62A76ABB-9990-4EFC-A4FE-C7D698DAEB96/9600.17050.WINBLUE_REFRESH.140317-1640_X64FRE_SERVER_EVAL_EN-US-IR3_SSS_X64FREE_EN-US_DV9.ISO'
+
+#3
 qemu-system-x86_64 \
   -m 3G \
   -cpu host \
@@ -20,7 +24,7 @@ qemu-system-x86_64 \
 
 #enter 2x
 
-#3
+#4
 install windows using vnc
 
 uncheck hide drive
@@ -39,7 +43,7 @@ server manager > local server > windwos remote desktop enable
 $ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
 $ netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
 
-#4
+#5
 apt install apache2 -y && sudo ufw allow 'Apache' && dd if=windows2012.img | gzip -c>windows2012r2.gz && mv windows2012r2.gz /var/www/html/
  
 #download or upload vps
