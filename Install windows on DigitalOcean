@@ -1,17 +1,20 @@
-#1
+# 1
 apt-get update && apt-get install qemu -y && apt install qemu-utils -y && apt install qemu-system-x86-xen -y && apt install qemu-system-x86 -y && apt install qemu-kvm -y && qemu-img create -f raw windows2012.img 25G
 
-#download drive
-#Download Drivers : https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio
-#Download Windows : https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server
-#windows 8 : https://software.download.prss.microsoft.com/dbazure/Win8.1_EnglishInternational_x64.iso?t=a3ad944e-bfdf-4a6c-a411-828cf36c4425&e=1689933672&h=c0cf0c42ded307874457477c3af44951b0c522db384aa297d5434081b5bbeea2
-#windows server 2012 : https://download.microsoft.com/download/6/2/A/62A76ABB-9990-4EFC-A4FE-C7D698DAEB96/9600.17050.WINBLUE_REFRESH.140317-1640_X64FRE_SERVER_EVAL_EN-US-IR3_SSS_X64FREE_EN-US_DV9.ISO
+# download drive
+## Download Drivers : https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio
+## Download Windows : https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server
 
-#2
+## windows 8.1 : https://software.download.prss.microsoft.com/dbazure/Win8.1_EnglishInternational_x64.iso?t=a3ad944e-bfdf-4a6c-a411-828cf36c4425&e=1689933672&h=c0cf0c42ded307874457477c3af44951b0c522db384aa297d5434081b5bbeea2
+### https://www.win10productkeys.com/windows-8-product-keys
+
+## windows server 2012 : https://download.microsoft.com/download/6/2/A/62A76ABB-9990-4EFC-A4FE-C7D698DAEB96/9600.17050.WINBLUE_REFRESH.140317-1640_X64FRE_SERVER_EVAL_EN-US-IR3_SSS_X64FREE_EN-US_DV9.ISO
+
+# 2
 wget -O virtio-win.iso 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.189-1/virtio-win.iso'
 wget -O windows2012.iso 'https://download.microsoft.com/download/6/2/A/62A76ABB-9990-4EFC-A4FE-C7D698DAEB96/9600.17050.WINBLUE_REFRESH.140317-1640_X64FRE_SERVER_EVAL_EN-US-IR3_SSS_X64FREE_EN-US_DV9.ISO'
 
-#3
+# 3
 qemu-system-x86_64 \
   -m 3G \
   -cpu host \
@@ -24,9 +27,9 @@ qemu-system-x86_64 \
   -device usb-tablet \
   -vnc :0 \
 
-#enter 2x
+## enter 2x
 
-#4
+# 4
 install windows using vnc Your_Dropler_IP
 
 uncheck hide drive
@@ -35,7 +38,7 @@ load drive and browse on virtio-win
 \NetKvm\2k12r2\amd64
 \viostor\2k12r2\amd64
 
-#windows
+# windows
 server manager > IE Enchanced Security Configure off
 download chrome
 bit.ly/3rsILhg
@@ -45,8 +48,8 @@ server manager > local server > windwos remote desktop enable
 $ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
 $ netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
 
-#5
+# 5
 apt install apache2 -y && sudo ufw allow 'Apache' && dd if=windows2012.img | gzip -c>windows2012r2.gz && mv windows2012r2.gz /var/www/html/
  
-#download or upload vps
+# download or upload vps
 Check if it works with typing : http://YOUR-IP-HERE/filename.gz
