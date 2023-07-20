@@ -27,7 +27,7 @@ qemu-system-x86_64 \
 #enter 2x
 
 #4
-install windows using vnc
+install windows using vnc Your_Dropler_IP
 
 uncheck hide drive
 
