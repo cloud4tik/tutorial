@@ -1,3 +1,46 @@
 apt update -y && apt upgrade -y && apt dist-upgrade -y && reboot
 
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl && wget https://raw.githubusercontent.com/vinstechmy/SSH-XRAY-Websocket-Multiport/main/V1/setup-lite.sh && chmod +x setup-lite.sh && ./setup-lite.sh
+
+
+==================================
+Mengubah baner ssh
+------------------
+
+nano /etc/issue.net
+nano /etc/ssh/sshd_config
+Banner /etc/issue.net
+sudo /etc/init.d/ssh restart
+
+
+
+<font color="blue">
+<H3 style="text-align:center"><span style="background-color:green">
+Welcome to ssh cloud4tik</span></H3>
+<font>
+
+<H3 style="text-align:center"><span style="background-color:red">
+** Warning...!!! **</span></H3>
+
+<H3 style="text-align:center"><span style="background-color:whitesmoke;">
+🚀 NO DDOS 🚀</span></H3>
+
+<H3 style="text-align:center"><span style="background-color:whitesmoke;">
+🚀 NO HACKING 🚀</span></H3>
+
+<H3 style="text-align:center"><span style="background-color:whitesmoke;">
+🚀 NO TORRENT 🚀</span></H3>
+
+<H3 style="text-align:center"><span style="background-color:whitesmoke;">
+🚀 NO SPAMMING 🚀</span></H3>
+
+<H3 style="text-align:center"><span style="background-color:whitesmoke;">
+🚀 MAX LOG 2 DEVICE 🚀</span></H3>
+
+<H3 style="text-align:center"><span style="background-color:red">
+** Thanks... **</span></H3>
+
+<font color="blue">
+<H3 style="text-align:center"><span style="background-color:green">
+---= cloud4tik.my.id =---</span></H3>
+<font>
