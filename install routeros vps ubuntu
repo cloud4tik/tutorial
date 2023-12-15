@@ -1,0 +1,24 @@
+
+routeros 6
+wget https://download.mikrotik.com/routeros/6.49.11/chr-6.49.11.img.zip -O chr.img.zip && \
+gunzip -c chr.img.zip > chr.img && \
+echo u > /proc/sysrq-trigger && \
+dd if=chr.img bs=1024 of=/dev/vda
+
+
+routeros 7
+wget --no-check-certificate https://download.mikrotik.com/routeros/7.2/chr-7.2.img.zip -O chr.img.zip  && \
+gunzip -c chr.img.zip > chr.img && \
+dd if=chr.img of=/dev/vda bs=4M oflag=sync && \
+echo u > /proc/sysrq-trigger && \
+echo 1 > /proc/sys/kernel/sysrq && \
+echo b > /proc/sysrq-trigger
+
+
+ifconfig : eth0
+
+lsblk
+
+
+curl -L https://download.mikrotik.com/routeros/7.12.1/chr-7.12.1.img.zip | funzip |dd of=/dev/vda bs=1M
+curl -L https://download.mikrotik.com/routeros/6.49.11/chr-6.49.11.img.zip | funzip |dd of=/dev/vda bs=1M
