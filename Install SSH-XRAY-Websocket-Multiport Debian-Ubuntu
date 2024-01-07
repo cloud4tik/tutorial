@@ -9,17 +9,21 @@ Mengubah baner ssh
 
 nano /etc/issue.net
 nano /etc/ssh/sshd_config
-Banner /etc/issue.net
+#find
+  # no default banner path
+  #Banner none
+#add
+  Banner /etc/issue.net
 sudo /etc/init.d/ssh restart
 
 
 
-<font color="blue">
+<font color="mintcream">
 <H3 style="text-align:center"><span style="background-color:green">
-Welcome to ssh cloud4tik</span></H3>
+Welcome To SSH cloudtik</span></H3>
 <font>
 
-<H3 style="text-align:center"><span style="background-color:red">
+<H3 style="text-align:center"><span style="background-color:red; color: whitesmoke;">
 ** Warning...!!! **</span></H3>
 
 <H3 style="text-align:center"><span style="background-color:whitesmoke;">
@@ -37,10 +41,10 @@ Welcome to ssh cloud4tik</span></H3>
 <H3 style="text-align:center"><span style="background-color:whitesmoke;">
 🚀 MAX LOG 2 DEVICE 🚀</span></H3>
 
-<H3 style="text-align:center"><span style="background-color:red">
-** Thanks... **</span></H3>
+<H3 style="text-align:center"><span style="background-color:red; color: whitesmoke;">
+** Thank You... **</span></H3>
 
-<font color="blue">
+<font color="mintcream">
 <H3 style="text-align:center"><span style="background-color:green">
----= cloud4tik.my.id =---</span></H3>
+---= cloudtik.my.id =---</span></H3>
 <font>
